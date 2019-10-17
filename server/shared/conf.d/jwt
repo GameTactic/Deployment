@@ -1,0 +1,5 @@
+# Append JWT Pass to env.
+GT_ENV="$GT_ENV -e JWT_PASSPHRASE=\"xxxxxxxxxxxxxxxxxxxxxx\" "
+
+# Add certs via volumes.
+GT_VOL="$GT_VOL -v $SHARED/jwt:/var/www/html/config/jwt "

@@ -1,0 +1,2 @@
+# Link var to local.
+GT_VOL="$GT_VOL -v $APP_DIR/var:/var/www/html/var "

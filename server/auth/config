@@ -1,0 +1,18 @@
+# Image config
+IMAGE=gametactic/authentication:latest
+HOST=auth
+
+# Database
+DB=true
+DB_USER=YOUR_USERNAME
+DB_PASS=YOUR_PASSWORD
+DB_NAME=YOUR_DATABASE
+
+# JWT Support
+source "${CONFD}jwt"
+
+# WG Keys
+source "${CONFD}wargaming"
+
+# Api Platform specific.
+source "${CONFD}phpapi"

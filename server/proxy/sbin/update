@@ -1,0 +1,14 @@
+#!/bin/sh
+docker stop proxy
+docker rm -f proxy
+#docker rmi jwilder/nginx-proxy:latest
+docker run --restart always \
+        -p 80:80 -p 443:443 \
+        --name proxy \
+	-v /data/eu/proxy/conf:/etc/nginx/conf.d \
+	-v /data/eu/proxy/cert:/etc/nginx/certs \
+	-v /data/eu/proxy/vhost:/etc/nginx/vhost.d \
+	-v /data/eu/proxy/html:/usr/share/nginx/html \
+	-v /var/run/docker.sock:/tmp/docker.sock:ro \
+        -d \
+        jwilder/nginx-proxy:latest

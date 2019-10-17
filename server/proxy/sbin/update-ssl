@@ -1,0 +1,11 @@
+#!/bin/sh
+docker stop acme
+docker rm -f acme
+#docker rmi jrcs/letsencrypt-nginx-proxy-companion:latest
+docker run --restart always \
+        --name acme \
+	--volumes-from proxy \
+	-v /var/run/docker.sock:/var/run/docker.sock:ro \
+	-e "DEFAULT_EMAIL=yourmail@example.com" \
+        -d \
+        jrcs/letsencrypt-nginx-proxy-companion:latest
