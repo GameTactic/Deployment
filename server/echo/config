@@ -1,3 +1,0 @@
-# Image config
-IMAGE=gametactic/cpp-echo:latest
-HOST=echo

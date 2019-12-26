@@ -1,3 +1,0 @@
-#!/bin/sh
-APP=$(basename $(dirname "$(cd "$(dirname "$0")" && pwd)"))
-docker exec -ti "$APP" /var/www/html/bin/console "$@"

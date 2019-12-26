@@ -1,6 +1,0 @@
-# Image config
-IMAGE=phpmyadmin/phpmyadmin:latest
-HOST=pma
-
-# Database
-DB=true

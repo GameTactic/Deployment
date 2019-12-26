@@ -1,2 +1,0 @@
-# Wargaming Guard Key
-GT_ENV="$GT_ENV -e GUARD_WG=\"xxxxxxxxxxxxxxxxxxxxx\" "
