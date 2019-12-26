@@ -26,3 +26,5 @@ done
 if ls -A src/Migrations/*.php > /dev/null 2>&1; then
   bin/console doctrine:migrations:migrate --no-interaction
 fi
+
+chown nginx:nginx -R .
