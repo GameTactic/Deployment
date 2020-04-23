@@ -18,4 +18,4 @@ if [ -f /app_migrate ]; then
 fi
 
 echo 'Starting Supervisor...'
-/usr/bin/supervisord --nodaemon --configuration /etc/supervisord.conf
+exec /usr/bin/supervisord --nodaemon --configuration /etc/supervisord.conf
