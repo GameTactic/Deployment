@@ -3,6 +3,8 @@
 if [[ "${SYMFONY_DECRYPTION_SECRET}" != "" ]]; then
   echo "Decrypting secrets..."
   sudo -E -u www-data bin/console secrets:decrypt-to-local --force --env=prod --no-interaction
+  rm -f .env.local.php
+  touch .env
 fi
 
 if [ -f /app_migrate ]; then
