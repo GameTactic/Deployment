@@ -13,7 +13,7 @@ if [ -f /app_migrate ]; then
     REPEAT=$((REPEAT + 1))
     sleep 1
 
-    if [ $REPEAT -eq 30 ]; then
+    if [ $REPEAT -eq 630 ]; then
       echo "Database connection failed!"
       exit 1;
     fi
