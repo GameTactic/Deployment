@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [[ -z "${SYMFONY_DECRYPTION_SECRET}" ]]; then
+  echo "Decrypting secrets..."
+  sudo -E -u www-data bin/console secrets:decrypt-to-local --force --env=prod --no-interaction
+fi
+
 if [ -f /app_migrate ]; then
   echo "Waiting for db to be ready..."
   REPEAT=0
