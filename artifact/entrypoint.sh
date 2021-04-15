@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [[ -z "${SYMFONY_DECRYPTION_SECRET}" ]]; then
+if [[ "${SYMFONY_DECRYPTION_SECRET}" != "" ]]; then
   echo "Decrypting secrets..."
   sudo -E -u www-data bin/console secrets:decrypt-to-local --force --env=prod --no-interaction
 fi
