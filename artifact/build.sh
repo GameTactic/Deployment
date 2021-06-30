@@ -3,7 +3,7 @@ set -eu
 
 # Configure Webserver
 curl -Ss https://raw.githubusercontent.com/GameTactic/Deployment/master/artifact/nginx_main.conf > /etc/nginx/nginx.conf
-curl -Ss https://raw.githubusercontent.com/GameTactic/Deployment/master/artifact/nginx.conf > /etc/nginx/conf.d/default.conf
+curl -Ss https://raw.githubusercontent.com/GameTactic/Deployment/master/artifact/nginx.conf > /etc/nginx/http.d/default.conf
 
 # Configure PHP
 curl -Ss https://raw.githubusercontent.com/GameTactic/Deployment/master/artifact/docker.conf > /usr/local/etc/php-fpm.d/docker.conf
