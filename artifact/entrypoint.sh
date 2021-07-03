@@ -21,7 +21,10 @@ if [ -f /app_migrate ]; then
     fi
   done
   echo 'Running migrations...'
+  sudo -E -u www-data bin/console cache:warmup --no-interaction --quiet
   sudo -E -u www-data bin/console doctrine:migrations:migrate latest --no-interaction
+else
+  sudo -E -u www-data bin/console cache:warmup --no-interaction --quiet
 fi
 
 echo 'Starting Supervisor...'
