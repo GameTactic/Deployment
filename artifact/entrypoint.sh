@@ -27,5 +27,10 @@ else
   sudo -E -u www-data bin/console cache:warmup --no-interaction --quiet
 fi
 
+if [ -f /app_mongodb ]; then
+  sudo -E -u www-data bin/console doctrine:mongodb:generate:hydrators -n
+  sudo -E -u www-data bin/console doctrine:mongodb:generate:proxies -n
+fi
+  
 echo 'Starting Supervisor...'
 exec /usr/bin/supervisord --nodaemon --configuration /etc/supervisord.conf
