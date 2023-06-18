@@ -10,10 +10,15 @@ curl -Ss https://raw.githubusercontent.com/GameTactic/Deployment/master/artifact
 echo -e "[PHP]\nupload_max_filesize = 2M\npost_max_size = 4M\n" > /usr/local/etc/php/php.ini
 
 # Install Nginx Metrics Export
-wget https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v0.9.0/nginx-prometheus-exporter_0.9.0_linux_amd64.tar.gz
-tar zxvf nginx-prometheus-exporter_0.9.0_linux_amd64.tar.gz
-rm nginx-prometheus-exporter_0.9.0_linux_amd64.tar.gz
+if [[ -z "${TARGETARCH}" ]]; then
+  wget "https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v0.9.0/nginx-prometheus-exporter_0.9.0_linux_${TARGETARCH}.tar.gz"
+else
+  wget "https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v0.9.0/nginx-prometheus-exporter_0.9.0_linux_amd64.tar.gz"
+fi
+tar zxvf nginx-prometheus-exporter_0.9.0_linux_*.tar.gz
+rm nginx-prometheus-exporter_0.9.0_linux_*.tar.gz
 mv nginx-prometheus-exporter /bin
+
 
 # Configure container runtime
 curl -Ss https://raw.githubusercontent.com/GameTactic/Deployment/master/artifact/supervisord.conf > /etc/supervisord.conf
