@@ -1,8 +1,9 @@
 #!/bin/sh
 
-if [ -d "/vault/secrets" ]; then
+VAULT_PATH="/vault/secrets"
+if [ -d "$VAULT_PATH" ]; then
     echo "Sourcing injected secrets..."
-    for file in "$DIR_PATH"/*; do
+    for file in "$VAULT_PATH"/*; do
         if [ -f "$file" ]; then
             . "$file"
         fi
