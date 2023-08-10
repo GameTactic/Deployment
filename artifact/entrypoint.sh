@@ -1,5 +1,14 @@
 #!/bin/sh
 
+if [ -d "/vault/secrets" ]; then
+    echo "Sourcing injected secrets..."
+    for file in "$DIR_PATH"/*; do
+        if [ -f "$file" ]; then
+            . "$file"
+        fi
+    done
+fi
+
 if [[ "${SYMFONY_DECRYPTION_SECRET}" != "" ]]; then
   echo "Decrypting secrets..."
   sudo -E -u www-data bin/console secrets:decrypt-to-local --force --env=prod --no-interaction
